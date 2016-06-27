@@ -1,5 +1,5 @@
 class Idea < ActiveRecord::Base
-  validates_presence_true :title, :body
+  validates_presence_of :title, :body
 
   enum quality: {
          swill: 0,
