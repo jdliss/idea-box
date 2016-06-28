@@ -27,7 +27,6 @@ $(document).ready(function() {
             );
 
             var newBody = $('#' + data.id).children('.truncate');
-            debugger;
             newBody.text(truncateString(newBody.text(), 100));
         });
     });

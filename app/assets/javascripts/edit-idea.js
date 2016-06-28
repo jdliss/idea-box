@@ -4,17 +4,15 @@ $(document).ready(function() {
         $(this).html('');
         $(this).attr('id', 'temp-id');
         $('<input></input>')
-        .attr({
-            'class': 'editing-title',
-            'data-id': $(this).parent().attr('id'),
-            'size': '30',
-            'value': text
-        })
-        .appendTo('#temp-id');
+            .attr({
+                'data-id': $(this).parent().attr('id'),
+                'value': text
+            })
+            .appendTo('#temp-id');
 
-    $(this).removeClass('title');
-    $('#temp-id').select();
-    $(this).removeAttr('id', 'temp-id');
+        $(this).removeClass('title');
+        $('#temp-id').select();
+        $(this).removeAttr('id', 'temp-id');
     });
 
 
@@ -23,16 +21,22 @@ $(document).ready(function() {
         $(this).html('');
         $(this).attr('id', 'temp-id');
         $('<input></input>')
-        .attr({
-            'class': 'editing-body',
-            'data-id': $(this).parent().attr('id'),
-            'size': '30',
-            'value': text
-        })
-        .appendTo('#temp-id');
+            .attr({
+                'data-id': $(this).parent().attr('id'),
+                'value': text
+            })
+            .appendTo('#temp-id');
 
-    $(this).removeClass('body');
-    $('#temp-id').select();
-    $(this).removeAttr('id', 'temp-id');
+        $(this).removeClass('body');
+        $('#temp-id').select();
+        $(this).removeAttr('id', 'temp-id');
     });
+
+    $('.ideas-list').on('blur', '.body', function() {
+        debugger;
+    })
+
+    $('.ideas-list').on('blur', '.title', function() {
+        debugger;
+    })
 });
