@@ -10,8 +10,8 @@
   <ul class="ideas-list">
     <% @ideas.each do |idea| %>
       <div class="idea" id="<%= idea.id %>">
-        <h4><%= idea.title %></h4>
-        <li class="truncate"><%= idea.body %></li>
+        <h4 class="title"><%= idea.title %></h4>
+        <li class="truncate body"><%= idea.body %></li>
         <li id="quality-<%= idea.id %>"><%= idea.quality %></li><br>
         <button id="up-<%= idea.id %>" class="upvote">up</button>
         <button id="down-<%= idea.id %>" class="downvote">down</button>
