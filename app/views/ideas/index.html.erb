@@ -9,10 +9,11 @@
 <div class="ideas">
   <ul class="ideas-list">
     <% @ideas.each do |idea| %>
-      <div>
+      <div id="<%= idea.id %>">
         <h4><%= idea.title %></h4>
         <li class="truncate"><%= idea.body %></li>
-        <li><%= idea.quality %></li>
+        <li><%= idea.quality %></li><br>
+        <button class="delete-idea">delete</button>
       </div>
     <% end %>
   </ul>
