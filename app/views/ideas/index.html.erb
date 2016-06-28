@@ -12,7 +12,7 @@
       <div class="idea" id="<%= idea.id %>">
         <h4><%= idea.title %></h4>
         <li class="truncate"><%= idea.body %></li>
-        <li><%= idea.quality %></li><br>
+        <li id="quality-<%= idea.id %>"><%= idea.quality %></li><br>
         <button id="up-<%= idea.id %>" class="upvote">up</button>
         <button id="down-<%= idea.id %>" class="downvote">down</button>
         <button id="<%= idea.id %>" class="delete-idea">delete</button>

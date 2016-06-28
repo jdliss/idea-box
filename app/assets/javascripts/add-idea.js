@@ -9,7 +9,7 @@ $(document).ready(function() {
 
             var title = "<h4>" + data.title + "</h4>";
             var body = "<li class='truncate'>" + data.body + "</li>";
-            var quality = "<li>" + data.quality + "</li><br>";
+            var quality = "<li id=quality-" + data.id + ">" + data.quality + "</li><br>";
             var button = "<button id=" + data.id + " class='delete-idea'>delete</button> "
             var up = '<button id="up-' + data.id + '" class="upvote">up</button> ';
             var down = '<button id="down-' + data.id + '" class="downvote">down</button> ';
