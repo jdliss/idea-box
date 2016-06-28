@@ -16,8 +16,7 @@ $(document).ready(function() {
 
 
             $('.ideas-list').prepend(
-                "<div class='idea' id='"
-                    + data.id + "'>"
+                "<div class='idea' id='" + data.id + "'>"
                     + title
                     + body
                     + quality
@@ -26,6 +25,9 @@ $(document).ready(function() {
                     + button
                     + "</div>"
             );
+
+            var newBody = $('#' + data.id + ' > li.truncate');
+            newBody.innerHTML = truncateString(newBody.innerHTML, 100)j;
         });
     });
 });
