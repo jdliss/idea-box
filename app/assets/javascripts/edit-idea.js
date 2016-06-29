@@ -28,7 +28,6 @@ function makeEditable(class1, class2, object) {
             'class': class1 + " " + class2 + id,
             'data-id': id,
             'value': text,
-            'name': 'input',
             'size': '50'
             
         })
