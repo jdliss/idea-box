@@ -18,6 +18,7 @@ group :development, :test do
   gem 'launchy'
   gem 'capybara'
   gem 'byebug'
+  gem 'selenium-webdriver'
 end
 
 group :development do
