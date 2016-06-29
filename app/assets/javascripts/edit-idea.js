@@ -7,6 +7,14 @@ $(document).ready(function() {
         makeEditable('edit-body', 'editable-body-', $(this));
     });
 
+    $('.ideas-list').on('blur', '.edit-title', function() {
+        sendEdit('title', $(this));
+    });
+
+    $('.ideas-list').on('blur', '.edit-body', function() {
+        sendEdit('body', $(this));
+    })
+
     function makeEditable(class1, class2, object) {
         var text = object.text();
         var id = object.parent().attr('id');
@@ -26,33 +34,22 @@ $(document).ready(function() {
         object.removeAttr('id', 'temp-id');
     };
 
-    $('.ideas-list').on('blur', '.edit-title', function() {
+    function sendEdit(fieldName, object) {
         $.ajax({
             type: "PATCH",
-            data: "title=" + $(this).val(),
-            url: "/api/v1/ideas/" + $(this).data('id'),
-            success: function(result) {
-                var id = this.url.split('/').pop();
-                var $title = $('#' + id).children('.title');
-                $title.html('');
-                $title.addClass('title');
-                $title.text(this.data.split('title=').pop());
+            data: fieldName + "=" + object.val(),
+            url: "/api/v1/ideas/" + object.data('id'),
+            success: function() {
+                successFunc(fieldName, this);
             }
         });
-    });
+    };
 
-    $('.ideas-list').on('blur', '.edit-body', function() {
-        $.ajax({
-            type: "PATCH",
-            data: "body=" + $(this).val(),
-            url: "/api/v1/ideas/" + $(this).data('id'),
-            success: function(result) {
-                var id = this.url.split('/').pop();
-                var $title = $('#' + id).children('.body');
-                $title.html('');
-                $title.addClass('body');
-                $title.text(this.data.split('body=').pop());
-            }
-        });
-    })
+    function successFunc(fieldName, obj) {
+        var id = obj.url.split('/').pop();
+        var $title = $('#' + id).children('.' + fieldName);
+        $title.html('');
+        $title.addClass(fieldName);
+        $title.text(obj.data.split(fieldName + '=').pop());
+    }
 });
