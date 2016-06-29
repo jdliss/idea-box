@@ -1,30 +1,20 @@
 $(document).ready(function() {
     $('.ideas-list').on('click', '.title', function() {
-        var text = $(this).text();
-        var id = $(this).parent().attr('id');
-        $(this).html('');
-        $(this).attr('id', 'temp-id');
-        $('<input></input>')
-            .attr({
-                'class': 'edit-title editable-title-' + id,
-                'data-id': id,
-                'value': text,
-                'size': '50'
-            })
-            .appendTo('#temp-id');
-
-        $('.editable-title-' + id).select();
-        $(this).removeAttr('id', 'temp-id');
+        makeEditable('edit-title', 'editable-title-', $(this));
     });
 
     $('.ideas-list').on('click', '.body', function() {
-        var text = $(this).text();
-        var id = $(this).parent().attr('id');
-        $(this).html('');
-        $(this).attr('id', 'temp-id');
+        makeEditable('edit-body', 'editable-body-', $(this));
+    });
+
+    function makeEditable(class1, class2, object) {
+        var text = object.text();
+        var id = object.parent().attr('id');
+        object.html('');
+        object.attr('id', 'temp-id');
         $('<input></input>')
             .attr({
-                'class': 'edit-body editable-body-' + id,
+                'class': class1 + " " + class2 + id,
                 'data-id': id,
                 'value': text,
                 'size': '50'
@@ -32,9 +22,9 @@ $(document).ready(function() {
             })
             .appendTo('#temp-id');
 
-        $('.editable-body-' + id).select();
-        $(this).removeAttr('id', 'temp-id');
-    });
+        $('.' + class2 + id).select();
+        object.removeAttr('id', 'temp-id');
+    };
 
     $('.ideas-list').on('blur', '.edit-title', function() {
         $.ajax({
