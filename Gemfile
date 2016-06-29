@@ -18,9 +18,7 @@ group :development, :test do
   gem 'launchy'
   gem 'capybara'
   gem 'byebug'
-  gem "database_cleaner"
-  gem 'capybara-webkit'
-  gem 'simplecov'
+  gem 'selenium-webdriver'
 end
 
 group :development do
