@@ -9,6 +9,13 @@ class Api::V1::IdeasController < ApiController
     end
   end
 
+  def update
+    idea = Idea.find(params[:id])
+    params[:body] ? idea.update(body: params[:body]) : idea.update(title: params[:title])
+    idea.save
+    respond_with idea
+  end
+
   def destroy
     respond_with Idea.destroy(params[:id])
   end
