@@ -2,19 +2,17 @@ $(document).ready(function () {
 
     var $ideas = $('.idea');
 
-    $('#idea_filter_title').on('keyup', function () {
-        filterIdeas(".title", this);
+    $('#idea_filter').on('keyup', function () {
+        filterIdeas(this);
     });
 
-    $('#idea_filter_body').on('keyup', function () {
-        filterIdeas(".body", this);
-    });
-
-    function filterIdeas(_class, object) {
-        var keyword = object.value;
+    function filterIdeas(object) {
+        var keyword = object.value.toLowerCase();
         $ideas.each(function (index, idea) {
             $idea = $(idea);
-            if ($idea.children(_class).text().toLowerCase().includes(keyword.toLowerCase())) {
+            var titleText = $idea.children(".title").text().toLowerCase();
+            var bodyText = $idea.children(".body").text().toLowerCase();
+            if (titleText.includes(keyword) || bodyText.includes(keyword)) {
                 $idea.show();
             } else {
                 $idea.hide();
